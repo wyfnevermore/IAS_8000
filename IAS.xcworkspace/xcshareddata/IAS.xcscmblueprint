@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D23EA86CED25C81A94C7B223A0CAACA78418D1DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C7F38217A1DF7EB7D818A811844304D5E3403792" : 9223372036854775807,
+    "D23EA86CED25C81A94C7B223A0CAACA78418D1DD" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "47DDD441-6A9B-4C79-92FF-0BE17305C4B8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C7F38217A1DF7EB7D818A811844304D5E3403792" : "IAS_8000_%E6%B1%9F%E8%8B%8F%E5%8D%AB%E8%A7%86%E6%BC%94%E7%A4%BA%E7%89%88\/IAS\/",
+    "D23EA86CED25C81A94C7B223A0CAACA78418D1DD" : "IAS_8000_%E6%B1%9F%E8%8B%8F%E5%8D%AB%E8%A7%86%E6%BC%94%E7%A4%BA%E7%89%88\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "IAS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "IAS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wyfnevermore\/IAS-2.0.1.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C7F38217A1DF7EB7D818A811844304D5E3403792"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wyfnevermore\/IAS-2.0.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D23EA86CED25C81A94C7B223A0CAACA78418D1DD"
+    }
+  ]
+}
