@@ -145,7 +145,7 @@
 
 - (void)updateData{
     //为饼状图提供数据
-    [self setDataCount:5 range:100];
+    [self setDataCount:3 range:100];
     //设置动画效果
     [self.pieChartView animateWithXAxisDuration:1.0f easingOption:ChartEasingOptionEaseOutExpo];
 }
@@ -154,12 +154,32 @@
 {
     double mult = range;
     NSMutableArray *entries = [[NSMutableArray alloc] init];
-//    for (int i = 0; i < count; i++) {
-//        [entries addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:[NSString stringWithFormat:@"第%d个", i]]];
-//    }
-    [entries addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:@"蛋白质"]];
-    [entries addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:@"脂肪"]];
-    [entries addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:@"水分"]];
+
+    //假数据按范围随机生成，
+    double danbaiVal = 15 + floorf(((double)arc4random() / ARC4RANDOM_MAX) * 1000.0f)/100;
+    double zhifangVal = 20 + floorf(((double)arc4random() / ARC4RANDOM_MAX) * 2000.0f)/100;
+    double shuifenVal = 100 - danbaiVal - zhifangVal;
+    NSLog(@"danbaiVal：%f,zhifangVal：%f,shuifenVal：%f",danbaiVal,zhifangVal,shuifenVal);
+    NSString *danbai = [NSString stringWithFormat:@"%f",danbaiVal];
+    NSString *zhifang = [NSString stringWithFormat:@"%f",zhifangVal];
+    NSString *shuifen = [NSString stringWithFormat:@"%f",shuifenVal];
+    NSString *resString = @"蛋白质:";
+    resString = [resString stringByAppendingFormat:@"%@%@%@%@%@",danbai, @";脂肪:",zhifang,@";水分:",shuifen];
+    NSLog(@"resString：%@",resString);
+    NSMutableArray *matters = [[NSMutableArray alloc] init];
+    NSMutableArray *values = [[NSMutableArray alloc] init];
+    NSArray *allMatters= [resString componentsSeparatedByString:@";"];
+    if ([allMatters count] > 0) {
+        for (int i = 0; i < [allMatters count]; i++) {
+            [matters addObject:[allMatters[i] componentsSeparatedByString:@":"][0]];
+            NSNumber *num = [NSNumber numberWithDouble:[[allMatters[i] componentsSeparatedByString:@":"][1] doubleValue]];
+            [values addObject:num];
+        }
+    }
+    for (int i = 0; i < [matters count]; i++) {
+        [entries addObject:[[PieChartDataEntry alloc] initWithValue:[values[i] doubleValue] label:matters[i]]];
+    }
+
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:entries label:@""];
     dataSet.sliceSpace = 2.0;
     NSMutableArray *colors = [[NSMutableArray alloc] init];
