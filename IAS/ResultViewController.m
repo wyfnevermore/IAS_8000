@@ -31,16 +31,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _type.frame = CGRectMake(screenWidth*0.07246, screenHeight*0.1753, screenWidth*0.8575, screenHeight*0.0611);
+    self.view.backgroundColor = BgColor;
+    
     if ([_name containsString:@"能量"]){
         _type.textAlignment = NSTextAlignmentLeft;
-    }else{
-        _type.textAlignment = NSTextAlignmentCenter;
     }
-    [_type setText:_name];
+    _type.hidden = true;
     NSLog(@"结果页数据：%@",_name);
-    _type.numberOfLines =0;
-    [_type sizeToFit];
+    
     self.title = @"检测结果";
     // Do any additional setup after loading the view.
     Ymax = [[_dataXGDArray valueForKeyPath:@"@max.floatValue"]doubleValue];
@@ -58,21 +56,21 @@
     
         
         //updateData btn
-        UIButton *display_btn = [[UIButton alloc] init];
-        [display_btn setTitle:@"updateData" forState:UIControlStateNormal];
-        [display_btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        display_btn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:display_btn];
-        [display_btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(200, 50));
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.centerY.equalTo(self.view.mas_centerY).offset(240);
-        }];
-        [display_btn addTarget:self action:@selector(updateData) forControlEvents:UIControlEventTouchUpInside];
+//        UIButton *display_btn = [[UIButton alloc] init];
+//        [display_btn setTitle:@"updateData" forState:UIControlStateNormal];
+//        [display_btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//        display_btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+//        [self.view addSubview:display_btn];
+//        [display_btn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(200, 50));
+//            make.centerX.equalTo(self.view.mas_centerX);
+//            make.centerY.equalTo(self.view.mas_centerY).offset(240);
+//        }];
+//        [display_btn addTarget:self action:@selector(updateData) forControlEvents:UIControlEventTouchUpInside];
         
         //创建饼状图
         self.pieChartView = [[PieChartView alloc] init];
-        self.pieChartView.backgroundColor = BgColor;
+//        self.pieChartView.backgroundColor = BgColor;
         [self.view addSubview:self.pieChartView];
         [self.pieChartView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(screenWidth, screenHeight));
@@ -139,7 +137,24 @@
         _resImg.frame = CGRectMake(screenWidth*0.12, screenHeight*0.333, screenWidth*0.776, screenHeight*0.436);
         [Tools setModelType:_pic :_resImg :0];
         _resImg.hidden = false;
-        _type.hidden = false;
+        NSLog(@"非豆浆结果页数据：%@",_name);
+        
+        UILabel *title_label = [[UILabel alloc] init];
+        title_label.text = _name;
+        title_label.numberOfLines =0;
+        [title_label sizeToFit];
+        if ([_name length] > 15) {
+            title_label.frame = CGRectMake(screenWidth*0.07246, screenHeight*0.1753, screenWidth*0.8575, screenHeight*0.1);
+            title_label.font = [UIFont systemFontOfSize:25];
+        }else{
+            title_label.frame = CGRectMake(screenWidth*0.07246, screenHeight*0.1753, screenWidth*0.8575, screenHeight*0.09);
+            title_label.font = [UIFont systemFontOfSize:30];
+
+        }
+        title_label.textColor = [UIColor brownColor];
+        title_label.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:title_label];
+        
     }
 }
 

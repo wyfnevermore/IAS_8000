@@ -10,6 +10,7 @@
 
 #import "ViewController.h"
 #import "WorkFlowViewController.h"
+#define BgColor [UIColor colorWithRed:230/255.0f green:253/255.0f blue:253/255.0f alpha:1]
 
 @interface ViewController ()<WorkFlowChooseDelegate>
 @property (strong,nonatomic)NSMutableArray *workFlowForNow;
@@ -75,6 +76,7 @@
     //选择设备型号
     _deviceType = 100;//因为默认为0，所以随便设一个，不然默认就是手持,也用来判断是不是第一次选择
     [self showDeviceType];//一定放最后
+    self.view.backgroundColor = BgColor;
 
 }
 
@@ -595,7 +597,7 @@
 //        NSString* Result1 = [NSString stringWithFormat:@"%d",value];
 //        double ax = [Result1 doubleValue]/100;
 //        NSString* Result2 = [NSString stringWithFormat:@"%.2f",ax];
-        [_showResultNow appendString:[NSString stringWithFormat:@"甜度：%@°Brix\n",Result]];
+        [_showResultNow appendString:[NSString stringWithFormat:@"甜度：%@°\n",Result]];
         [_showResultNow appendString:[NSString stringWithFormat:@"(苹果甜度范围：11～20°Brix)"]];
     }else{
         NSString* Result = [Tools getRestData:projectIDStr :dataString];

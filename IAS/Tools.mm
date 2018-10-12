@@ -264,7 +264,7 @@
         NSArray *arrys= [receData componentsSeparatedByString:@":"];
         segueToResult = arrys[2];
         segueToResult = [segueToResult substringToIndex:segueToResult.length-11];
-        segueToResult = [NSString stringWithFormat:@"%@° Brix",segueToResult];
+        segueToResult = [NSString stringWithFormat:@"%@°Brix",segueToResult];
     }
     else if ([receData containsString:@"-2"]){
         segueToResult = @"未知样品！";
